@@ -1,27 +1,36 @@
-.navbar{
+.navbar {
   height: 50px;
-  background-color: #003580;
   display: flex;
   justify-content: center;
 }
 
-.navContainer{
+
+.navContainer {
   width: 100%;
   max-width: 1024px;
-  color: white;
+  color: rgb(140, 58, 58);
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-.logo{
+.logo {
   font-weight: 500;
+  font-size: 25px;
 }
 
-.navButton{
+.navItems {
+  margin-top: 8px;
+}
+
+.navButton {
   margin-left: 20px;
-  border: none;
-  padding: 5px 10px;
+  border: 1px solid rgb(104, 31, 31);
+  outline: none;
+  padding: 5px 15px;
+  font-size: 18px;
   cursor: pointer;
-  color: #003580;
+  background-color: transparent;
+  border-radius: 30px;
+  color: #c82828;
 }
