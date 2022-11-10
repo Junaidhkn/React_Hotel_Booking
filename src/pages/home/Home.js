@@ -1,12 +1,13 @@
+import Layout from '../../components/layout/Layout'
 import Navbar from '../../components/navbar/Navbar'
 import Header from '../../components/header/Header'
 
 const Home = () => {
    return (
-      <div>
+      <Layout>
          <Navbar />
          <Header />
-      </div>
+      </Layout>
    )
 }
 

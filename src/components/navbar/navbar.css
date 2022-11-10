@@ -1,22 +1,24 @@
 .navbar {
+  position: relative;
   height: 50px;
   display: flex;
   justify-content: center;
+  z-index: 4;
 }
 
 
 .navContainer {
   width: 100%;
   max-width: 1024px;
-  color: rgb(140, 58, 58);
+  color: rgb(138, 126, 113);
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
 .logo {
-  font-weight: 500;
-  font-size: 25px;
+  font-weight: 600;
+  font-size: 35px;
 }
 
 .navItems {
@@ -32,5 +34,12 @@
   cursor: pointer;
   background-color: transparent;
   border-radius: 30px;
-  color: #c82828;
+  color: #f01d1d;
+  transition: all 0.3s;
+}
+
+
+.navButton:hover {
+  color: aliceblue;
+  background-color: rgb(104, 31, 31);
 }

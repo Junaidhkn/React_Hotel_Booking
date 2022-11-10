@@ -1,0 +1,19 @@
+.video_background {
+   position: absolute;
+   min-width: 100vw;
+   height: 70vh;
+   z-index: 2;
+   background: rgba(0, 0, 0, 0.35);
+}
+
+.videoTag {
+   min-width: 100vw;
+   height: 70vh;
+   object-fit: cover;
+   position: fixed;
+   left: 0;
+   right: 0;
+   top: 0;
+   z-index: -1;
+   background: rgba(0, 0, 0, 0.9);
+}
