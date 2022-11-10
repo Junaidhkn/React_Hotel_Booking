@@ -10,7 +10,7 @@
 .navContainer {
   width: 100%;
   max-width: 1024px;
-  color: rgb(138, 126, 113);
+  color: white;
   display: flex;
   align-items: center;
   justify-content: space-between;
