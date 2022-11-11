@@ -7,6 +7,10 @@
   z-index: 4;
 }
 
+.header.listMode {
+  background-color: #003580;
+}
+
 .headerContainer {
   width: 100%;
   max-width: 1024px;
@@ -14,6 +18,7 @@
 }
 
 .headerContainer.listMode {
+  background-color: #003580;
   margin: 20px 0px 0px 0px;
 }
 

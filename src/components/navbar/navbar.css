@@ -6,6 +6,10 @@
   z-index: 4;
 }
 
+.navbar.listMode {
+  background-color: #003580;
+}
+
 
 .navContainer {
   width: 100%;
@@ -14,6 +18,10 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.navContainer.listMode {
+  background-color: #003580;
 }
 
 .logo {
