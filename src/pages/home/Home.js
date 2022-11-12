@@ -1,3 +1,4 @@
+import Layout from '../../components/layout/Layout'
 import Featured from "../../components/featured/Featured";
 import FeaturedProperties from "../../components/featuredProperties/FeaturedProperties";
 import Footer from "../../components/footer/Footer";
@@ -9,7 +10,7 @@ import "./home.css";
 
 const Home = () => {
    return (
-      <div>
+      <Layout>
          <Navbar />
          <Header />
          <div className="homeContainer">
@@ -21,7 +22,7 @@ const Home = () => {
             <MailList />
             <Footer />
          </div>
-      </div>
+      </Layout>
    );
 };
 
