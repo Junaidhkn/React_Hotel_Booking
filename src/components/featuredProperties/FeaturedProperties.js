@@ -4,7 +4,7 @@ import Loading from '../loading/Loading.js';
 import './featuredProperties.css';
 
 const FeaturedProperties = () => {
-	const { data, loading, error } = useFetch(
+	const { data, loading } = useFetch(
 		'http://localhost:8000/api/hotels?featured=true&limit=4',
 	);
 	return (

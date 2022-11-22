@@ -3,7 +3,7 @@ import Loading from '../loading/Loading';
 import './propertyList.css';
 
 const PropertyList = () => {
-	const { data, loading, error } = useFetch(
+	const { data, loading } = useFetch(
 		'http://localhost:8000/api/hotels/countByType',
 	);
 	const images = [
@@ -20,7 +20,7 @@ const PropertyList = () => {
 			) : (
 				<>
 					{data &&
-						images.map((img, i) => {
+						images.map( ( img, i ) => {
 							return (
 								<div
 									className='pListItem'
@@ -38,7 +38,7 @@ const PropertyList = () => {
 									</div>
 								</div>
 							);
-						})}
+						} )}
 				</>
 			)}
 		</div>
