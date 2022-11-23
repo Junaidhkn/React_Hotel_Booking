@@ -6,12 +6,11 @@ import { useState } from 'react';
 import { format } from 'date-fns';
 import { DateRange } from 'react-date-range';
 import useFetch from '../../hooks/useFetch.js';
-import Loading from '../loading/Loading';
+import Loading from '../../components/loading/Loading.js';
 import SearchItem from '../../components/searchItem/SearchItem';
 
 const List = () => {
 	const location = useLocation();
-	console.log(location);
 	const [destination, setDestination] = useState(location.state.destination);
 	const [date, setDate] = useState(location.state.date);
 	const [openDate, setOpenDate] = useState(false);
