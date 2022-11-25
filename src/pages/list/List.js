@@ -15,11 +15,13 @@ const List = () => {
 	const [date, setDate] = useState(location.state.date);
 	const [openDate, setOpenDate] = useState(false);
 	const [options, setOptions] = useState(location.state.options);
-	const [min, setMin] = useState(0);
-	const [max, setMax] = useState(999);
+	const [min, setMin] = useState(undefined);
+	const [max, setMax] = useState(undefined);
 
 	const { data, loading, refetchData } = useFetch(
-		`http://localhost:8000/api/hotels?city=${destination}&min=${min}&max=${max}`,
+		`http://localhost:8000/api/hotels?city=${destination}&min=${min || 0}&max=${
+			max || 999
+		}`,
 	);
 	const handleSearch = () => {
 		refetchData();
