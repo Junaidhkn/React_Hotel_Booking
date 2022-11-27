@@ -11,16 +11,15 @@ import SearchItem from '../../components/searchItem/SearchItem';
 
 const List = () => {
 	const location = useLocation();
-	const [destination, setDestination] = useState(location.state.destination);
-	const [date, setDate] = useState(location.state.date);
-	const [openDate, setOpenDate] = useState(false);
-	const [options, setOptions] = useState(location.state.options);
-	const [min, setMin] = useState(undefined);
-	const [max, setMax] = useState(undefined);
+	const [destination, setDestination] = useState( location.state.destination );
+	const [dates, setDate] = useState( location.state.dates );
+	const [openDate, setOpenDate] = useState( false );
+	const [options, setOptions] = useState( location.state.options );
+	const [min, setMin] = useState( undefined );
+	const [max, setMax] = useState( undefined );
 
 	const { data, loading, refetchData } = useFetch(
-		`http://localhost:8000/api/hotels?city=${destination}&min=${min || 0}&max=${
-			max || 999
+		`http://localhost:8000/api/hotels?city=${destination}&min=${min || 0}&max=${max || 999
 		}`,
 	);
 	const handleSearch = () => {
@@ -43,15 +42,15 @@ const List = () => {
 						</div>
 						<div className='lsItem'>
 							<label>Check-in Date</label>
-							<span onClick={() => setOpenDate(!openDate)}>{`${format(
-								date[0].startDate,
+							<span onClick={() => setOpenDate( !openDate )}>{`${format(
+								dates[0].startDate,
 								'MM/dd/yyyy',
-							)} to ${format(date[0].endDate, 'MM/dd/yyyy')}`}</span>
+							)} to ${format( dates[0].endDate, 'MM/dd/yyyy' )}`}</span>
 							{openDate && (
 								<DateRange
-									onChange={(item) => setDate([item.selection])}
+									onChange={( item ) => setDate( [item.selection] )}
 									minDate={new Date()}
-									ranges={date}
+									ranges={dates}
 								/>
 							)}
 						</div>
@@ -64,8 +63,8 @@ const List = () => {
 									</span>
 									<input
 										type='number'
-										onChange={(e) => {
-											setMin(e.target.value);
+										onChange={( e ) => {
+											setMin( e.target.value );
 										}}
 										className='lsOptionInput'
 									/>
@@ -76,8 +75,8 @@ const List = () => {
 									</span>
 									<input
 										type='number'
-										onChange={(e) => {
-											setMax(e.target.value);
+										onChange={( e ) => {
+											setMax( e.target.value );
 										}}
 										className='lsOptionInput'
 									/>
@@ -118,14 +117,14 @@ const List = () => {
 							<Loading />
 						) : (
 							<>
-								{data.map((item) => {
+								{data.map( ( item ) => {
 									return (
 										<SearchItem
 											item={item}
 											key={item._id}
 										/>
 									);
-								})}
+								} )}
 							</>
 						)}
 					</div>
