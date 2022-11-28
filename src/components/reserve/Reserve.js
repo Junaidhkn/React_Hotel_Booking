@@ -10,7 +10,9 @@ import { useNavigate } from 'react-router-dom';
 
 const Reserve = ({ setOpen, hotelId }) => {
 	const [selectedRooms, setSelectedRooms] = useState([]);
-	const { data, loading, error } = useFetch(`/hotels/room/${hotelId}`);
+	const { data, loading, error } = useFetch(
+		`http://localhost:8000/api/hotels/room/${hotelId}`,
+	);
 	const { dates } = useContext(SearchContext);
 
 	const getDatesInRange = (startDate, endDate) => {
@@ -32,7 +34,7 @@ const Reserve = ({ setOpen, hotelId }) => {
 	const alldates = getDatesInRange(dates[0].startDate, dates[0].endDate);
 
 	const isAvailable = (roomNumber) => {
-		const isFound = roomNumber.unavailableDates.some((date) =>
+		const isFound = roomNumber.unavailableDates?.some((date) =>
 			alldates.includes(new Date(date).getTime()),
 		);
 
@@ -55,14 +57,16 @@ const Reserve = ({ setOpen, hotelId }) => {
 		try {
 			await Promise.all(
 				selectedRooms.map((roomId) => {
-					const res = axios.put(`/rooms/availability/${roomId}`, {
-						dates: alldates,
-					});
+					const res = axios.put(
+						`http://localhost:8000/api/rooms/availability/${roomId}`,
+						{
+							dates: alldates,
+						},
+					);
 					return res.data;
 				}),
 			);
 			setOpen(false);
-			navigate('/');
 		} catch (err) {}
 	};
 	return (
