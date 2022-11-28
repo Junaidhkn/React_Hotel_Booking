@@ -12,15 +12,20 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { useContext, useState } from 'react';
 import useFetch from '../../hooks/useFetch.js';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Loading from '../../components/loading/Loading.js';
 import { SearchContext } from '../../context/SearchContext.js';
+import { AuthContext } from '../../context/AuthContext.js';
+import Reserve from '../../components/reserve/Reserve.js';
 
 const Hotel = () => {
+	const { user } = useContext( AuthContext );
+	const navigate = useNavigate()
 	const location = useLocation();
 	const id = location.pathname.split( '/' )[2];
 	const [slideNumber, setSlideNumber] = useState( 0 );
 	const [open, setOpen] = useState( false );
+	const [openModal, setOpenModal] = useState( false );
 
 	const { data, loading, refetchData } = useFetch(
 		`http://localhost:8000/api/hotels/find/${id}`,
@@ -75,6 +80,15 @@ const Hotel = () => {
 
 		setSlideNumber( newSlideNumber );
 	};
+
+	const handleClick = () => {
+		if ( user ) {
+			setOpenModal( true )
+
+		} else {
+			navigate( '/login' )
+		}
+	}
 
 	return (
 		<div>
@@ -167,7 +181,7 @@ const Hotel = () => {
 										<b>${days * data?.cheapestPrice * options.room}</b> ({days}{" "}
 										nights)
 									</h2>
-									<button>Reserve or Book Now!</button>
+									<button onClick={handleClick}>Reserve or Book Now!</button>
 								</div>
 							</div>
 						</div>
@@ -176,6 +190,7 @@ const Hotel = () => {
 					</div>
 				</>
 			)}
+			{openModal && <Reserve setOpen={setOpenModal} hotelId={id} />}
 		</div>
 	);
 };
