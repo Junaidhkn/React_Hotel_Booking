@@ -26,7 +26,7 @@ const Login = () => {
 				'http://localhost:8000/api/auth/login',
 				credentials,
 			);
-			dispatch({ type: 'LOGIN_SUCCESS', payload: res.data.details });
+			dispatch({ type: 'LOGIN_SUCCESS', payload: res.data });
 			navigate('/');
 		} catch (err) {
 			dispatch({ type: 'LOGIN_FAILURE', payload: err.response.data });
@@ -50,13 +50,13 @@ const Login = () => {
 					onChange={handleChange}
 					className='lInput'
 				/>
+				{error && <span className='error'>{error}</span>}
 				<button
 					disabled={loading}
 					onClick={handleClick}
 					className='lButton'>
 					Login
 				</button>
-				{error && <span>{error.message}</span>}
 			</div>
 		</div>
 	);

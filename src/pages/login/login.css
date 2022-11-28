@@ -16,6 +16,10 @@
    padding: 10px;
 }
 
+.error {
+   color: red;
+}
+
 .lButton {
    border: none;
    padding: 10px 20px;
